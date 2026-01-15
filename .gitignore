@@ -1,0 +1,16 @@
+﻿pycache/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+.env
+.env.prod
+db.sqlite3
+staticfiles/
+.pytest_cache/
+htmlcov/
+.coverage
+*.pem
+.idea/
+.vscode/

@@ -1,0 +1,32 @@
+[project]
+name = "payout-service"
+version = "1.0.0"
+requires-python = ">=3.11"
+dependencies = [
+    "django>=4.2,<5.0",
+    "djangorestframework>=3.14,<4.0",
+    "celery[redis]>=5.3,<6.0",
+    "psycopg[binary]>=3.1,<4.0",
+    "python-decouple>=3.8,<4.0",
+    "drf-spectacular>=0.27,<1.0",
+    "django-filter>=23.5,<24.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4,<8.0",
+    "pytest-django>=4.7,<5.0",
+    "factory-boy>=3.3,<4.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings.testing"
+python_files = ["test_*.py"]
+testpaths = ["src"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/apps", "src/config", "src/core"]
