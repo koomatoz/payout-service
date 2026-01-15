@@ -40,9 +40,9 @@ jobs:
       postgres:
         image: postgres:15-alpine
         env:
-          POSTGRES_DB: test_db
-          POSTGRES_USER: test_user
-          POSTGRES_PASSWORD: test_pass
+          POSTGRES_DB: payout_db
+          POSTGRES_USER: payout_user
+          POSTGRES_PASSWORD: payout_pass
         ports:
           - 5432:5432
         options: >-
@@ -55,11 +55,6 @@ jobs:
         image: redis:7-alpine
         ports:
           - 6379:6379
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
 
     steps:
       - name: Checkout code
@@ -75,26 +70,28 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e ".[dev]"
 
-      - name: Run tests
+      - name: Run migrations
         env:
-          DJANGO_ENV: testing
-          POSTGRES_DB: test_db
-          POSTGRES_USER: test_user
-          POSTGRES_PASSWORD: test_pass
+          POSTGRES_DB: payout_db
+          POSTGRES_USER: payout_user
+          POSTGRES_PASSWORD: payout_pass
           POSTGRES_HOST: localhost
-          POSTGRES_PORT: 5432
           CELERY_BROKER_URL: redis://localhost:6379/0
           CELERY_RESULT_BACKEND: redis://localhost:6379/0
         run: |
-          cd src && pytest --cov --cov-report=xml --cov-report=term
+          cd src && python manage.py migrate
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          files: src/coverage.xml
-          fail_ci_if_error: false
-          token: ${{ secrets.CODECOV_TOKEN }}
-
+      - name: Run tests
+        env:
+          POSTGRES_DB: payout_db
+          POSTGRES_USER: payout_user
+          POSTGRES_PASSWORD: payout_pass
+          POSTGRES_HOST: localhost
+          CELERY_BROKER_URL: redis://localhost:6379/0
+          CELERY_RESULT_BACKEND: redis://localhost:6379/0
+        run: |
+          cd src && pytest -v --tb=short
+          
   docker:
     name: Docker Build
     runs-on: ubuntu-latest
