@@ -11,7 +11,7 @@ select = [
     "C4",  # flake8-comprehensions
     "UP",  # pyupgrade
 ]
-ignore = ["E501"]
+ignore = ["E501", "F403", "F405"]
 
 [lint.isort]
 known-first-party = ["apps", "config", "core"]

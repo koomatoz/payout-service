@@ -1,11 +1,12 @@
-﻿from enum import StrEnum
+from enum import StrEnum
+
 
 class PayoutStatus(StrEnum):
-    PENDING = 'pending'
-    PROCESSING = 'processing'
-    COMPLETED = 'completed'
-    FAILED = 'failed'
-    CANCELLED = 'cancelled'
+    PENDING = "pending"
+    PROCESSING = "processing"
+    COMPLETED = "completed"
+    FAILED = "failed"
+    CANCELLED = "cancelled"
 
     @classmethod
     def choices(cls):
@@ -15,11 +16,12 @@ class PayoutStatus(StrEnum):
     def terminal_statuses(cls):
         return {cls.COMPLETED, cls.FAILED, cls.CANCELLED}
 
+
 class Currency(StrEnum):
-    USD = 'USD'
-    EUR = 'EUR'
-    GBP = 'GBP'
-    RUB = 'RUB'
+    USD = "USD"
+    EUR = "EUR"
+    GBP = "GBP"
+    RUB = "RUB"
 
     @classmethod
     def choices(cls):
