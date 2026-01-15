@@ -10,7 +10,7 @@ REST API для управления заявками на выплату сре
 - PostgreSQL
 - Docker
 
-## ыстрый старт
+## Быстрый старт
 
 ```bash
 docker-compose up --build
@@ -43,15 +43,15 @@ Bash
 # Установить Docker
 curl -fsSL https://get.docker.com | sh
 
-# лонировать проект
+# Клонировать проект
 git clone https://github.com/YOUR_USERNAME/payout-service.git
 cd payout-service
 
-# астроить .env
+# Настроить .env
 cp .env.example .env
 nano .env  # зменить SECRET_KEY
 
-# апустить
+# Запустить
 docker-compose up -d
 собенности
 UUID идентификаторы
