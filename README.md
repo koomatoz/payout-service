@@ -1,5 +1,7 @@
 ﻿# Payout Service
 
+**GitHub:** https://github.com/koomatoz/payout-service
+
 REST API для управления заявками на выплату средств.
 
 ## Технологии
