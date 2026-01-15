@@ -24,9 +24,11 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "config.settings.testing"
+DJANGO_SETTINGS_MODULE = "config.settings.base"
 python_files = ["test_*.py"]
 testpaths = ["src"]
+pythonpath = ["src"]
+addopts = ["-v", "--tb=short", "--reuse-db"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/apps", "src/config", "src/core"]
