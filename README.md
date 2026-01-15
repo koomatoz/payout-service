@@ -61,3 +61,15 @@ Atomic transactions
 select_for_update (race conditions)
 Celery retry с backoff
 State machine для статусов
+
+
+## 📸 Скриншоты работы API
+
+### Swagger UI
+![Swagger UI](screenshots/1-swagger-ui.png)
+
+### Создание заявки (201 Created)
+![Create Payout](screenshots/2-create-payout.png)
+
+### Обработанная заявка (Completed)
+![Completed Payout](screenshots/3-get-payout-completed.png)
