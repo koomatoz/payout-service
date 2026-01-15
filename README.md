@@ -1,5 +1,10 @@
 ﻿# Payout Service
 
+![CI/CD](https://github.com/koomatoz/payout-service/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.11-blue.svg)
+![Django](https://img.shields.io/badge/django-4.2-green.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
 **GitHub:** https://github.com/koomatoz/payout-service
 
 REST API для управления заявками на выплату средств.

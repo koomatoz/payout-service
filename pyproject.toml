@@ -30,3 +30,15 @@ testpaths = ["src"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/apps", "src/config", "src/core"]
+
+[tool.coverage.run]
+source = ["apps"]
+omit = ["*/tests/*", "*/migrations/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+]
